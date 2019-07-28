@@ -9,13 +9,27 @@
 import UIKit
 import CoreData
 
+enum RoomsViewControllerType {
+    case detail
+    case edit
+}
+
 class RoomsViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView:        UITableView!
+    @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     
     // MARK: - Properties
     lazy var controller = RoomController()
     var indexPathToBeDeleted: IndexPath?
+    var roomViewType: RoomsViewControllerType = .detail {
+        willSet {
+            setupView(newValue)
+        }
+    }
+    
+    // MARK: Actions
+    var didSelectAction: (_ indexPath: IndexPath) -> Void = { _ in }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +37,7 @@ class RoomsViewController: UIViewController {
         setupNavigation()
         setupTableView()
         setupController()
+        setupView(.detail) // Default
     }
     
     // MARK: - IBActions
@@ -44,6 +59,21 @@ extension RoomsViewController {
     func setupController() {
         controller.delegate = self
     }
+    
+    func setupView(_ type: RoomsViewControllerType) {
+        switch type {
+        case .detail:
+            addBarButtonItem.isEnabled = false
+            didSelectAction = { indexPath in
+                self.performSegue(withIdentifier: Identifiers.roomDetail, sender: self.controller.rooms[indexPath.row])
+            }
+        case .edit:
+            addBarButtonItem.isEnabled = true
+            didSelectAction = { indexPath in
+                self.performSegue(withIdentifier: Identifiers.roomEdit, sender: self.controller.rooms[indexPath.row])
+            }
+        }
+    }
 }
 
 // MARK: - TableView
@@ -63,7 +93,7 @@ extension RoomsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Identifiers.roomEdit, sender: controller.rooms[indexPath.row])
+        didSelectAction(indexPath)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -124,6 +154,14 @@ extension RoomsViewController {
             
             vc.setup(with: room)
             vc.delegate = self
+        }
+        
+        // Detail Room
+        if let room = sender as? RoomModel, segue.identifier == Identifiers.roomDetail {
+            let nav = segue.destination as! UINavigationController
+            let vc  = nav.topViewController as! RoomDetailViewController
+            
+            vc.title = room.name
         }
     }
 }

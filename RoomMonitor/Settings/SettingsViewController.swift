@@ -70,8 +70,11 @@ extension SettingsViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Identifiers.rooms {
             let vc  = segue.destination as! RoomsViewController
+            let _ = vc.view // Must let viewDidLoad occur before setting roomViewType
+            
             
             vc.navigationItem.largeTitleDisplayMode = .never
+            vc.roomViewType = .edit
         }
     }
 }

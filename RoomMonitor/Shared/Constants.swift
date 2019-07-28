@@ -11,5 +11,6 @@ import Foundation
 // MARK: - Storyboard Identifiers
 struct Identifiers {
     static let rooms      = "RoomsStoryboard"
+    static let roomDetail = "RoomDetailViewController"
     static let roomEdit   = "RoomEditViewController"
 }

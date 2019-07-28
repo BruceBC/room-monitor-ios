@@ -1,104 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NQd-nV-wNW">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Tab Bar Controller-->
+        <scene sceneID="0Id-Iu-hPW">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RoomMonitor" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="lb3-IN-guH">
-                                <rect key="frame" x="20" y="132" width="220" height="110"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ecm-fg-s98">
-                                        <rect key="frame" x="0.0" y="1" width="175" height="108.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hardware Connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A0l-VT-caw">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WebSocket Connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBc-nA-EWS">
-                                                <rect key="frame" x="0.0" y="44.5" width="175" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g8S-IR-tbL">
-                                                <rect key="frame" x="0.0" y="89" width="175" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="hz7-Md-PXn">
-                                        <rect key="frame" x="200" y="0.0" width="20" height="110"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YSN-y0-G1w">
-                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="8nQ-Yf-Xlb"/>
-                                                    <constraint firstAttribute="height" constant="20" id="IWW-q6-bad"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AzA-v3-mvb">
-                                                <rect key="frame" x="0.0" y="45" width="20" height="20"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="kes-QW-Tzx"/>
-                                                    <constraint firstAttribute="width" constant="20" id="zIx-GT-Y5L"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5X-n4-tK8">
-                                                <rect key="frame" x="0.0" y="90" width="20" height="20"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="TVE-gh-Uw6"/>
-                                                    <constraint firstAttribute="height" constant="20" id="vI4-KU-puA"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bathroom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-Sg-FPy">
-                                <rect key="frame" x="20" y="64" width="170" height="43"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Hbe-Sg-FPy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="b1d-rh-GP0"/>
-                            <constraint firstItem="lb3-IN-guH" firstAttribute="top" secondItem="Hbe-Sg-FPy" secondAttribute="bottom" constant="25" id="br6-9X-rx2"/>
-                            <constraint firstItem="lb3-IN-guH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="icK-85-vo2"/>
-                            <constraint firstItem="Hbe-Sg-FPy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="m3Y-A9-KDy"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="84e-da-Z2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="NQd-nV-wNW" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i0g-a9-Aoj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <outlet property="hardwareConnectionIndicatorView" destination="YSN-y0-G1w" id="tU0-hV-klM"/>
-                        <outlet property="occupiedIndicatorView" destination="H5X-n4-tK8" id="UdO-zK-KhO"/>
-                        <outlet property="websocketConnectedIndicatorView" destination="AzA-v3-mvb" id="LFi-oE-ydK"/>
+                        <segue destination="Kej-5I-hZK" kind="relationship" relationship="viewControllers" id="wZb-d1-Nw6"/>
+                        <segue destination="a0T-MT-ccE" kind="relationship" relationship="viewControllers" id="BX6-H8-99U"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </tabBarController>
             </objects>
+            <point key="canvasLocation" x="-358" y="100"/>
+        </scene>
+        <!--Rooms-->
+        <scene sceneID="Gc1-5t-5ia">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Rooms" id="Kej-5I-hZK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="89h-j6-SGc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axN-Nm-kAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-608" y="496"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="DTS-y2-fnq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="a0T-MT-ccE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="qSc-vo-L60"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5D-jb-CEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-118" y="496"/>
         </scene>
     </scenes>
 </document>

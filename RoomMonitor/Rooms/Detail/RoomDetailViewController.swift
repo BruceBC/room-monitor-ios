@@ -10,7 +10,7 @@ import UIKit
 import AnyCodable
 import RoomMonitorCore
 
-class ViewController: UIViewController {
+class RoomDetailViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var hardwareConnectionIndicatorView: UIView!
     @IBOutlet weak var websocketConnectedIndicatorView: UIView!
@@ -22,13 +22,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigation()
         setupViews()
         setupInteractor()
+    }
+    
+    // MARK: - IBActions
+    @IBAction func back(_ sender: Any) {
+        dismiss(animated: true)
     }
 }
 
 // MARK: - Setup
-extension ViewController {
+extension RoomDetailViewController {
+    func setupNavigation() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     func setupViews() {
         hardwareConnectionIndicatorView.layer.cornerRadius = 10
         websocketConnectedIndicatorView.layer.cornerRadius = 10
@@ -41,7 +51,7 @@ extension ViewController {
 }
 
 // MARK: - UI
-extension ViewController {
+extension RoomDetailViewController {
     func displayMonitor(monitor: Monitor?) {
         guard let monitor = monitor else { return }
         occupiedIndicatorView.backgroundColor = monitor.present ? .green : .red
@@ -49,7 +59,7 @@ extension ViewController {
 }
 
 // MARK: WebsocketInteractorDelegate
-extension ViewController: WebsocketInteractorDelegate {
+extension RoomDetailViewController: WebsocketInteractorDelegate {
     func connected() {
         print("Connected")
         websocketConnectedIndicatorView.backgroundColor = .green
@@ -84,7 +94,7 @@ extension ViewController: WebsocketInteractorDelegate {
 }
 
 // MARK: Websocket Router
-extension ViewController {
+extension RoomDetailViewController {
     func route(response: WebsocketMessageResponse) {
         switch response.type {
         case "ready":
