@@ -28,6 +28,8 @@
 		3216AF1A22ED661F00C53494 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF1922ED661F00C53494 /* RoomEditViewController.swift */; };
 		3216AF2122ED6C1200C53494 /* RoomMonitor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF1F22ED6C1200C53494 /* RoomMonitor.xcdatamodeld */; };
 		3216AF2522ED6DC200C53494 /* RoomEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF2422ED6DC200C53494 /* RoomEntity+CoreDataClass.swift */; };
+		3216AF2722ED860900C53494 /* RoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF2622ED860900C53494 /* RoomController.swift */; };
+		3216AF2922EE2E1900C53494 /* RoomSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF2822EE2E1900C53494 /* RoomSocket.swift */; };
 		321BB92022EBB79A00D0E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB91F22EBB79A00D0E034 /* AppDelegate.swift */; };
 		321BB92222EBB79A00D0E034 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB92122EBB79A00D0E034 /* ViewController.swift */; };
 		321BB92522EBB79A00D0E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321BB92322EBB79A00D0E034 /* Main.storyboard */; };
@@ -120,6 +122,8 @@
 		3216AF1922ED661F00C53494 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
 		3216AF2022ED6C1200C53494 /* RoomMonitor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoomMonitor.xcdatamodel; sourceTree = "<group>"; };
 		3216AF2422ED6DC200C53494 /* RoomEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3216AF2622ED860900C53494 /* RoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomController.swift; sourceTree = "<group>"; };
+		3216AF2822EE2E1900C53494 /* RoomSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSocket.swift; sourceTree = "<group>"; };
 		321BB91C22EBB79A00D0E034 /* RoomMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321BB91F22EBB79A00D0E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321BB92122EBB79A00D0E034 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 				3216AF0E22ED5BF400C53494 /* Models */,
 				321BB95422EBBDD000D0E034 /* Rooms.storyboard */,
 				321BB95822EBBE4500D0E034 /* RoomsViewController.swift */,
+				3216AF2622ED860900C53494 /* RoomController.swift */,
+				3216AF2822EE2E1900C53494 /* RoomSocket.swift */,
 			);
 			path = Rooms;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				3216AF1022ED5C1100C53494 /* RoomModel.swift in Sources */,
 				321BB92222EBB79A00D0E034 /* ViewController.swift in Sources */,
 				321BB95922EBBE4500D0E034 /* RoomsViewController.swift in Sources */,
+				3216AF2722ED860900C53494 /* RoomController.swift in Sources */,
 				3216AF1A22ED661F00C53494 /* RoomEditViewController.swift in Sources */,
 				3216AF0D22ED510D00C53494 /* SettingModel.swift in Sources */,
 				321BB92022EBB79A00D0E034 /* AppDelegate.swift in Sources */,
@@ -533,6 +540,7 @@
 				3216AF2522ED6DC200C53494 /* RoomEntity+CoreDataClass.swift in Sources */,
 				3216AF2122ED6C1200C53494 /* RoomMonitor.xcdatamodeld in Sources */,
 				3216AF1322ED5C7600C53494 /* RoomCell.swift in Sources */,
+				3216AF2922EE2E1900C53494 /* RoomSocket.swift in Sources */,
 				3216AF0722ED501300C53494 /* SettingsViewController.swift in Sources */,
 				3216AF1622ED5DCD00C53494 /* Constants.swift in Sources */,
 			);

@@ -13,18 +13,16 @@ class RoomsViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Constants
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private let context     = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     // MARK: - Properties
-    lazy var rooms = fetchRooms()
+    lazy var controller = RoomController()
+    var indexPathToBeDeleted: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigation()
         setupTableView()
+        setupController()
     }
     
     // MARK: - IBActions
@@ -42,6 +40,10 @@ extension RoomsViewController {
     func setupTableView() {
         tableView.tableFooterView = UIView()
     }
+    
+    func setupController() {
+        controller.delegate = self
+    }
 }
 
 // MARK: - TableView
@@ -51,24 +53,43 @@ extension RoomsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rooms.count
+        return controller.rooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: roomReuseIdentifier, for: indexPath) as! RoomCell
-        cell.setup(with: rooms[indexPath.row])
+        cell.setup(with: controller.rooms[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Identifiers.roomEdit, sender: rooms[indexPath.row])
+        performSegue(withIdentifier: Identifiers.roomEdit, sender: controller.rooms[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteRoom(room: rooms[indexPath.row])
-            rooms = fetchRooms()
+            controller.deleteRoom(room: controller.rooms[indexPath.row])
+            controller.rooms = controller.fetchRooms()
             tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    // Swipe left for delete
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        indexPathToBeDeleted = indexPath
+        return nil
+    }
+}
+
+// MARK: - RoomControllerDelegate
+extension RoomsViewController: RoomControllerDelegate {
+    func refresh() {
+        guard let indexPaths = tableView.indexPathsForVisibleRows else { return }
+        
+        indexPaths.forEach { indexPath in
+            if let cell = tableView.cellForRow(at: indexPath) as? RoomCell {
+                cell.setup(with: self.controller.rooms[indexPath.row])
+            }
         }
     }
 }
@@ -79,36 +100,8 @@ extension RoomsViewController: RoomEditViewControllerDelegate {
         let range = NSMakeRange(0, tableView.numberOfSections)
         let sections = NSIndexSet(indexesIn: range)
         
-        rooms = fetchRooms()
+        controller.rooms = controller.fetchRooms()
         tableView.reloadSections(sections as IndexSet, with: .automatic)
-    }
-}
-
-// MARK: - Network
-extension RoomsViewController {
-    func fetchRooms() -> [RoomModel] {
-        let request = RoomEntity.fetchRequest() as NSFetchRequest<RoomEntity>
-        
-        do {
-            return try context.fetch(request).map { RoomModel(id: $0._id, name: $0._name, hardwareId: $0._hardwareId, maxDistance: $0._maxDistance, occupied: false) }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        return []
-    }
-    
-    func deleteRoom(room: RoomModel) {
-        let request = RoomEntity.fetchRequest() as NSFetchRequest<RoomEntity>
-        request.predicate = NSPredicate(format: "id == %@", room.id.uuidString)
-        
-        do {
-            let roomEnity = try context.fetch(request).first!
-            context.delete(roomEnity)
-            appDelegate.saveContext()
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
     }
 }
 

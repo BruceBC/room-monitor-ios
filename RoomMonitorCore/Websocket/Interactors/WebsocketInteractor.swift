@@ -11,7 +11,7 @@ import Starscream
 
 public protocol WebsocketInteractorDelegate: class {
     func connected()
-    func disconncted()
+    func disconnected()
     func received(result: Result<WebsocketMessageResponse, Error>)
     func received(result: Result<WebsocketDataResponse, Error>)
 }
@@ -67,7 +67,7 @@ extension WebsocketInteractor: WebSocketDelegate {
     }
     
     public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        delegate?.disconncted()
+        delegate?.disconnected()
         
         // Reconnect
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

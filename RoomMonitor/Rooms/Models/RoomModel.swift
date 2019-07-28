@@ -15,3 +15,13 @@ struct RoomModel {
     let maxDistance: Int
     let occupied:    Bool
 }
+
+extension RoomModel {
+    static func updatePresence(room: RoomModel, occupied: Bool) -> RoomModel {
+        return RoomModel(id: room.id,
+                         name: room.name,
+                         hardwareId: room.hardwareId,
+                         maxDistance: room.maxDistance,
+                         occupied: occupied)
+    }
+}

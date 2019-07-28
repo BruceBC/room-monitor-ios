@@ -1,65 +1,58 @@
 //
-//  ViewController.swift
+//  RoomSocket.swift
 //  RoomMonitor
 //
-//  Created by Bruce Colby on 7/26/19.
+//  Created by Bruce Colby on 7/28/19.
 //  Copyright © 2019 Bruce Colby. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import AnyCodable
 import RoomMonitorCore
 
-class ViewController: UIViewController {
-    // MARK: - IBOutlets
-    @IBOutlet weak var hardwareConnectionIndicatorView: UIView!
-    @IBOutlet weak var websocketConnectedIndicatorView: UIView!
-    @IBOutlet weak var occupiedIndicatorView: UIView!
+protocol RoomSocketDelegate: class {
+    func occupied(id: UUID, present: Bool)
+}
+
+class RoomSocket {
+    // MARK: - Public Properties
+    let room: RoomModel
     
     // MARK: - Private Properties
     private var interactor: WebsocketInteractor!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Weak Properties
+    weak var delegate: RoomSocketDelegate?
+    
+    init(room: RoomModel) {
+        self.room = room
         
-        setupViews()
+        // Setup
         setupInteractor()
     }
 }
 
 // MARK: - Setup
-extension ViewController {
-    func setupViews() {
-        hardwareConnectionIndicatorView.layer.cornerRadius = 10
-        websocketConnectedIndicatorView.layer.cornerRadius = 10
-        occupiedIndicatorView.layer.cornerRadius           = 10
-    }
-    
-    func setupInteractor() {
+extension RoomSocket {
+    private func setupInteractor() {
         interactor = WebsocketInteractor(url: "ws://localhost:4040/app", delegate: self)
     }
 }
 
-// MARK: - UI
-extension ViewController {
-    func displayMonitor(monitor: Monitor?) {
+// MARK: - Monitor
+extension RoomSocket {
+    private func report(monitor: Monitor?) {
         guard let monitor = monitor else { return }
-        occupiedIndicatorView.backgroundColor = monitor.present ? .green : .red
+        delegate?.occupied(id: room.id, present: monitor.present)
     }
 }
 
 // MARK: WebsocketInteractorDelegate
-extension ViewController: WebsocketInteractorDelegate {
-    func connected() {
-        print("Connected")
-        websocketConnectedIndicatorView.backgroundColor = .green
-    }
+extension RoomSocket: WebsocketInteractorDelegate {
+    func connected() {}
     
     func disconnected() {
-        print("Disconnected")
-        hardwareConnectionIndicatorView.backgroundColor = .red
-        websocketConnectedIndicatorView.backgroundColor = .red
-        occupiedIndicatorView.backgroundColor           = .red
+        delegate?.occupied(id: room.id, present: false)
     }
     
     func received(result: Result<WebsocketMessageResponse, Error>) {
@@ -83,8 +76,8 @@ extension ViewController: WebsocketInteractorDelegate {
     }
 }
 
-// MARK: Websocket Router
-extension ViewController {
+// MARK: - Websocket Router
+extension RoomSocket {
     func route(response: WebsocketMessageResponse) {
         switch response.type {
         case "ready":
@@ -109,7 +102,7 @@ extension ViewController {
     func route(response: WebsocketDataResponse) {
         switch response.type {
         case "monitor":
-            displayMonitor(monitor: Monitor.decode(response: response))
+            report(monitor: Monitor.decode(response: response))
             getMonitor()
         default:
             print("Unkown type")
@@ -117,11 +110,11 @@ extension ViewController {
     }
     
     func pair() {
-        interactor.pair(hardwareId: "50e90b91c72a8a6531900e6c0b842ef3")
+        interactor.pair(hardwareId: room.hardwareId)
     }
     
     func setMax() {
-        interactor.setMax(max: 80)
+        interactor.setMax(max: room.maxDistance)
     }
     
     func getMonitor() {
@@ -131,12 +124,10 @@ extension ViewController {
         }
     }
     
-    func hardwareConnected() {
-        hardwareConnectionIndicatorView.backgroundColor = .green
-    }
+    func hardwareConnected() {}
     
     func hardwareDisconnected() {
-        hardwareConnectionIndicatorView.backgroundColor = .red
+        delegate?.occupied(id: room.id, present: false)
     }
     
     func processNotStarted() {
