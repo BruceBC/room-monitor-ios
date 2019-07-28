@@ -8,6 +8,13 @@
 
 import Foundation
 
+// MARK: - Websocket Urls
+struct Urls {
+    static let local = ProcessInfo.processInfo.environment["local"] ?? ""
+    static let prod  = ProcessInfo.processInfo.environment["prod"]  ?? ""
+    static let current = Urls.prod
+}
+
 // MARK: - Storyboard Identifiers
 struct Identifiers {
     static let rooms      = "RoomsStoryboard"
