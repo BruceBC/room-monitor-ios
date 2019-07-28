@@ -100,8 +100,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="iSh-x7-zNl" id="raG-xw-kpi"/>
-                        <segue destination="Drq-ia-iAv" kind="presentation" identifier="RoomEditViewController-Edit" id="07u-sw-wzM"/>
-                        <segue destination="Drq-ia-iAv" kind="presentation" identifier="RoomEditViewController-Create" id="Udh-3H-zjx"/>
+                        <segue destination="Drq-ia-iAv" kind="presentation" identifier="RoomEditViewController" id="07u-sw-wzM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ovb-hI-5Id" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,7 +118,7 @@
                         <sections>
                             <tableViewSection id="ad1-ZD-ZD6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="497" id="7eh-BI-ZR0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="497" id="7eh-BI-ZR0">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="497"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7eh-BI-ZR0" id="dsk-fy-Uhr">
@@ -276,7 +275,4 @@
             <point key="canvasLocation" x="2002.8985507246377" y="79.6875"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Udh-3H-zjx"/>
-    </inferredMetricsTieBreakers>
 </document>

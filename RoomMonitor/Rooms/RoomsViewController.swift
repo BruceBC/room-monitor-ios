@@ -29,7 +29,7 @@ class RoomsViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func addRoom(_ sender: Any) {
-        performSegue(withIdentifier: Identifiers.roomCreate, sender: self)
+        performSegue(withIdentifier: Identifiers.roomEdit, sender: self)
     }
 }
 
@@ -59,6 +59,18 @@ extension RoomsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setup(with: rooms[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Identifiers.roomEdit, sender: rooms[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteRoom(room: rooms[indexPath.row])
+            rooms = fetchRooms()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
 
 // MARK: - RoomEditViewControllerDelegate
@@ -78,22 +90,46 @@ extension RoomsViewController {
         let request = RoomEntity.fetchRequest() as NSFetchRequest<RoomEntity>
         
         do {
-            return try context.fetch(request).map { RoomModel(name: $0._name, occupied: false) }
+            return try context.fetch(request).map { RoomModel(id: $0._id, name: $0._name, hardwareId: $0._hardwareId, maxDistance: $0._maxDistance, occupied: false) }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
         return []
     }
+    
+    func deleteRoom(room: RoomModel) {
+        let request = RoomEntity.fetchRequest() as NSFetchRequest<RoomEntity>
+        request.predicate = NSPredicate(format: "id == %@", room.id.uuidString)
+        
+        do {
+            let roomEnity = try context.fetch(request).first!
+            context.delete(roomEnity)
+            appDelegate.saveContext()
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
 }
 
 // MARK: - Navigation
 extension RoomsViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Identifiers.roomCreate {
+        // Create Room
+        if let _ = sender as? RoomsViewController, segue.identifier == Identifiers.roomEdit {
             let nav = segue.destination as! UINavigationController
             let vc  = nav.topViewController as! RoomEditViewController
             
+            vc.delegate = self
+        }
+        
+        // Edit Room
+        if let room = sender as? RoomModel, segue.identifier == Identifiers.roomEdit {
+            let nav = segue.destination as! UINavigationController
+            let vc  = nav.topViewController as! RoomEditViewController
+            let _   = vc.view // Ensure view is loaded
+            
+            vc.setup(with: room)
             vc.delegate = self
         }
     }

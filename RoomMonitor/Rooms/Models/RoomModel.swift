@@ -9,6 +9,9 @@
 import Foundation
 
 struct RoomModel {
-    let name: String
-    let occupied: Bool
+    let id:          UUID
+    let name:        String
+    let hardwareId:  String
+    let maxDistance: Int
+    let occupied:    Bool
 }
