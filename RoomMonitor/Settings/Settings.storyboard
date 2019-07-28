@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KQ6-oi-l3d">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="g0W-AZ-dlt">
+            <objects>
+                <viewController id="rdp-Ic-1Yf" customClass="SettingsViewController" customModule="RoomMonitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LVM-X0-J1u">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B99-7S-hBh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="setting" rowHeight="54" id="SzI-SM-fHN" customClass="SettingCell" customModule="RoomMonitor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SzI-SM-fHN" id="HeE-PF-NBD">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="53.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XH-ek-vu6">
+                                                    <rect key="frame" x="20" y="13.5" width="75" height="27"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6XH-ek-vu6" firstAttribute="leading" secondItem="HeE-PF-NBD" secondAttribute="leading" constant="20" id="IJY-EW-Vml"/>
+                                                <constraint firstItem="6XH-ek-vu6" firstAttribute="centerY" secondItem="HeE-PF-NBD" secondAttribute="centerY" id="nyd-uq-dQM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="6XH-ek-vu6" id="5b9-TO-zZu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="rdp-Ic-1Yf" id="V6w-i8-Nv7"/>
+                                    <outlet property="delegate" destination="rdp-Ic-1Yf" id="JCg-KH-S2A"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B99-7S-hBh" firstAttribute="top" secondItem="reu-uf-WD8" secondAttribute="top" id="cog-Zt-hjt"/>
+                            <constraint firstItem="reu-uf-WD8" firstAttribute="bottom" secondItem="B99-7S-hBh" secondAttribute="bottom" id="gbq-d9-PoN"/>
+                            <constraint firstItem="B99-7S-hBh" firstAttribute="leading" secondItem="reu-uf-WD8" secondAttribute="leading" id="u5m-XZ-wbN"/>
+                            <constraint firstItem="reu-uf-WD8" firstAttribute="trailing" secondItem="B99-7S-hBh" secondAttribute="trailing" id="yZu-CO-AKY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="reu-uf-WD8"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="J5a-FY-h9I"/>
+                    <connections>
+                        <outlet property="tableView" destination="B99-7S-hBh" id="Qek-Z5-0um"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wQP-DN-hbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="135.9375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NYq-gw-Pli">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KQ6-oi-l3d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kQT-QY-L7X">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rdp-Ic-1Yf" kind="relationship" relationship="rootViewController" id="rBh-rT-FcN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FeO-uo-7xD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="135.9375"/>
+        </scene>
+    </scenes>
+</document>
