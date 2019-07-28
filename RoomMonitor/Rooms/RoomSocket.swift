@@ -35,7 +35,7 @@ class RoomSocket {
 // MARK: - Setup
 extension RoomSocket {
     private func setupInteractor() {
-        interactor = WebsocketInteractor(url: "ws://localhost:4040/app", delegate: self)
+        interactor = WebsocketInteractor(url: Urls.current, delegate: self)
     }
 }
 

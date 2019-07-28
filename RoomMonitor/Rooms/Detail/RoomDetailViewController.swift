@@ -50,7 +50,7 @@ extension RoomDetailViewController {
     }
     
     func setupInteractor() {
-        interactor = WebsocketInteractor(url: "ws://localhost:4040/app", delegate: self)
+        interactor = WebsocketInteractor(url: Urls.current, delegate: self)
     }
     
     func setupTableView() {
