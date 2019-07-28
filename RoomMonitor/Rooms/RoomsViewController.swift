@@ -20,6 +20,7 @@ class RoomsViewController: UIViewController {
     @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
     
     // MARK: - Properties
+    private let refreshControl = UIRefreshControl()
     lazy var controller = RoomController()
     var indexPathToBeDeleted: IndexPath?
     var roomViewType: RoomsViewControllerType = .detail {
@@ -53,7 +54,10 @@ extension RoomsViewController {
     }
     
     func setupTableView() {
+        tableView.refreshControl = refreshControl
         tableView.tableFooterView = UIView()
+        
+        refreshControl.addTarget(self, action: #selector(manualRefresh), for: .valueChanged)
     }
     
     func setupController() {
@@ -163,5 +167,14 @@ extension RoomsViewController {
             
             vc.title = room.name
         }
+    }
+}
+
+// MARK: - Helpers
+extension RoomsViewController {
+    @objc private func manualRefresh() {
+        // Calling saved, even though named inappropriately, because it does exaclty what I need
+        self.saved()
+        self.refreshControl.endRefreshing()
     }
 }
