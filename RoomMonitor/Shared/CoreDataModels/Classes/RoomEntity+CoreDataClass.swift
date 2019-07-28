@@ -15,6 +15,10 @@ public class RoomEntity: NSManagedObject {
 
 // MARK: - Concrete
 extension RoomEntity {
+    var _id: UUID {
+        return id!
+    }
+    
     var _name: String {
         return name!
     }
