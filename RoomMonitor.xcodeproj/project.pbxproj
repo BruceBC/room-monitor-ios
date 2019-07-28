@@ -22,6 +22,12 @@
 		3216AF0722ED501300C53494 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF0622ED501300C53494 /* SettingsViewController.swift */; };
 		3216AF0A22ED50A700C53494 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF0922ED50A700C53494 /* SettingCell.swift */; };
 		3216AF0D22ED510D00C53494 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF0C22ED510D00C53494 /* SettingModel.swift */; };
+		3216AF1022ED5C1100C53494 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF0F22ED5C1100C53494 /* RoomModel.swift */; };
+		3216AF1322ED5C7600C53494 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF1222ED5C7600C53494 /* RoomCell.swift */; };
+		3216AF1622ED5DCD00C53494 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF1522ED5DCD00C53494 /* Constants.swift */; };
+		3216AF1A22ED661F00C53494 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF1922ED661F00C53494 /* RoomEditViewController.swift */; };
+		3216AF2122ED6C1200C53494 /* RoomMonitor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF1F22ED6C1200C53494 /* RoomMonitor.xcdatamodeld */; };
+		3216AF2522ED6DC200C53494 /* RoomEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AF2422ED6DC200C53494 /* RoomEntity+CoreDataClass.swift */; };
 		321BB92022EBB79A00D0E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB91F22EBB79A00D0E034 /* AppDelegate.swift */; };
 		321BB92222EBB79A00D0E034 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB92122EBB79A00D0E034 /* ViewController.swift */; };
 		321BB92522EBB79A00D0E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321BB92322EBB79A00D0E034 /* Main.storyboard */; };
@@ -108,6 +114,12 @@
 		3216AF0622ED501300C53494 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3216AF0922ED50A700C53494 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		3216AF0C22ED510D00C53494 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		3216AF0F22ED5C1100C53494 /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		3216AF1222ED5C7600C53494 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
+		3216AF1522ED5DCD00C53494 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3216AF1922ED661F00C53494 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
+		3216AF2022ED6C1200C53494 /* RoomMonitor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoomMonitor.xcdatamodel; sourceTree = "<group>"; };
+		3216AF2422ED6DC200C53494 /* RoomEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		321BB91C22EBB79A00D0E034 /* RoomMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321BB91F22EBB79A00D0E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321BB92122EBB79A00D0E034 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +237,55 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3216AF0E22ED5BF400C53494 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3216AF0F22ED5C1100C53494 /* RoomModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3216AF1122ED5C6A00C53494 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3216AF1222ED5C7600C53494 /* RoomCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3216AF1422ED5DC300C53494 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3216AF2222ED6DA400C53494 /* CoreDataModels */,
+				3216AF1522ED5DCD00C53494 /* Constants.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		3216AF1822ED660300C53494 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				3216AF1922ED661F00C53494 /* RoomEditViewController.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		3216AF2222ED6DA400C53494 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				3216AF2322ED6DB000C53494 /* Classes */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		3216AF2322ED6DB000C53494 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3216AF2422ED6DC200C53494 /* RoomEntity+CoreDataClass.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		321BB91322EBB79A00D0E034 = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +308,7 @@
 		321BB91E22EBB79A00D0E034 /* RoomMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				3216AF1422ED5DC300C53494 /* Shared */,
 				3216AEFE22ED4DD900C53494 /* Settings */,
 				321BB95322EBBDB900D0E034 /* Rooms */,
 				321BB91F22EBB79A00D0E034 /* AppDelegate.swift */,
@@ -255,6 +317,7 @@
 				321BB92622EBB79A00D0E034 /* Assets.xcassets */,
 				321BB92822EBB79A00D0E034 /* LaunchScreen.storyboard */,
 				321BB92B22EBB79A00D0E034 /* Info.plist */,
+				3216AF1F22ED6C1200C53494 /* RoomMonitor.xcdatamodeld */,
 			);
 			path = RoomMonitor;
 			sourceTree = "<group>";
@@ -262,6 +325,9 @@
 		321BB95322EBBDB900D0E034 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				3216AF1822ED660300C53494 /* Edit */,
+				3216AF1122ED5C6A00C53494 /* Cells */,
+				3216AF0E22ED5BF400C53494 /* Models */,
 				321BB95422EBBDD000D0E034 /* Rooms.storyboard */,
 				321BB95822EBBE4500D0E034 /* RoomsViewController.swift */,
 			);
@@ -457,12 +523,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3216AF1022ED5C1100C53494 /* RoomModel.swift in Sources */,
 				321BB92222EBB79A00D0E034 /* ViewController.swift in Sources */,
 				321BB95922EBBE4500D0E034 /* RoomsViewController.swift in Sources */,
+				3216AF1A22ED661F00C53494 /* RoomEditViewController.swift in Sources */,
 				3216AF0D22ED510D00C53494 /* SettingModel.swift in Sources */,
 				321BB92022EBB79A00D0E034 /* AppDelegate.swift in Sources */,
 				3216AF0A22ED50A700C53494 /* SettingCell.swift in Sources */,
+				3216AF2522ED6DC200C53494 /* RoomEntity+CoreDataClass.swift in Sources */,
+				3216AF2122ED6C1200C53494 /* RoomMonitor.xcdatamodeld in Sources */,
+				3216AF1322ED5C7600C53494 /* RoomCell.swift in Sources */,
 				3216AF0722ED501300C53494 /* SettingsViewController.swift in Sources */,
+				3216AF1622ED5DCD00C53494 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +817,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3216AF1F22ED6C1200C53494 /* RoomMonitor.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3216AF2022ED6C1200C53494 /* RoomMonitor.xcdatamodel */,
+			);
+			currentVersion = 3216AF2022ED6C1200C53494 /* RoomMonitor.xcdatamodel */;
+			path = RoomMonitor.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 321BB91422EBB79A00D0E034 /* Project object */;
 }

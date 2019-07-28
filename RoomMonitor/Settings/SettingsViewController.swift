@@ -13,16 +13,14 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
-    let settings = [
-        SettingModel(title: "Rooms"),
-        SettingModel(title: "Wifi")
-    ]
+    var settings = [SettingModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigation()
         setupTableView()
+        setupModels()
     }
 }
 
@@ -34,6 +32,15 @@ extension SettingsViewController {
     
     func setupTableView() {
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupModels() {
+        settings = [
+            SettingModel(title: "Rooms", action: {
+                self.performSegue(withIdentifier: Identifiers.rooms, sender: self)
+            }),
+            SettingModel(title: "Wifi", action: {})
+        ]
     }
 }
 
@@ -51,5 +58,20 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: settingReuseIdentifier, for: indexPath) as! SettingCell
         cell.setup(with: settings[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        settings[indexPath.row].action()
+    }
+}
+
+// MARK: - Navigation
+extension SettingsViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Identifiers.rooms {
+            let vc  = segue.destination as! RoomsViewController
+            
+            vc.navigationItem.largeTitleDisplayMode = .never
+        }
     }
 }

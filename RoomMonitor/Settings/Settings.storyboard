@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="setting" rowHeight="54" id="SzI-SM-fHN" customClass="SettingCell" customModule="RoomMonitor" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="setting" rowHeight="54" id="SzI-SM-fHN" customClass="SettingCell" customModule="RoomMonitor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SzI-SM-fHN" id="HeE-PF-NBD">
@@ -64,11 +64,20 @@
                     <navigationItem key="navigationItem" title="Settings" id="J5a-FY-h9I"/>
                     <connections>
                         <outlet property="tableView" destination="B99-7S-hBh" id="Qek-Z5-0um"/>
+                        <segue destination="WR2-Hc-Mn2" kind="show" identifier="RoomsStoryboard" id="ADh-x1-cxG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQP-DN-hbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="135.9375"/>
+        </scene>
+        <!--RoomsViewController-->
+        <scene sceneID="6B3-Uq-kik">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Rooms" referencedIdentifier="RoomsViewController" id="WR2-Hc-Mn2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gco-f0-FjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1815" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NYq-gw-Pli">

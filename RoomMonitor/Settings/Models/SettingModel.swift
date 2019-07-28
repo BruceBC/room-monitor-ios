@@ -10,4 +10,5 @@ import Foundation
 
 struct SettingModel {
     let title: String
+    let action: () -> Void
 }
