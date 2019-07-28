@@ -7,14 +7,99 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3216AECE22ECE73D00C53494 /* RoomMonitorCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3216AECC22ECE73D00C53494 /* RoomMonitorCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3216AED122ECE73D00C53494 /* RoomMonitorCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */; };
+		3216AED222ECE73D00C53494 /* RoomMonitorCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3216AED922ECE7E300C53494 /* WebsocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AED822ECE7E300C53494 /* WebsocketService.swift */; };
+		3216AEDC22ECE8BB00C53494 /* WebsocketMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AEDB22ECE8BB00C53494 /* WebsocketMessageResponse.swift */; };
+		3216AEDF22ECE96000C53494 /* WebsocketInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AEDE22ECE96000C53494 /* WebsocketInteractor.swift */; };
+		3216AEE222ECE9CD00C53494 /* WebsocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AEE122ECE9CD00C53494 /* WebsocketAPI.swift */; };
+		3216AEE422ECFD8200C53494 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AEE322ECFD8200C53494 /* Monitor.swift */; };
+		3216AEE622ECFE6F00C53494 /* WebsocketDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216AEE522ECFE6F00C53494 /* WebsocketDataResponse.swift */; };
+		3216AEFA22ED023500C53494 /* AnyCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AEEF22ED015F00C53494 /* AnyCodable.framework */; };
+		3216AEFB22ED023500C53494 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321BB96222EBC1C800D0E034 /* Starscream.framework */; };
 		321BB92022EBB79A00D0E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB91F22EBB79A00D0E034 /* AppDelegate.swift */; };
 		321BB92222EBB79A00D0E034 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB92122EBB79A00D0E034 /* ViewController.swift */; };
 		321BB92522EBB79A00D0E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321BB92322EBB79A00D0E034 /* Main.storyboard */; };
 		321BB92722EBB79A00D0E034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321BB92622EBB79A00D0E034 /* Assets.xcassets */; };
 		321BB92A22EBB79A00D0E034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321BB92822EBB79A00D0E034 /* LaunchScreen.storyboard */; };
+		321BB95522EBBDD000D0E034 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321BB95422EBBDD000D0E034 /* Rooms.storyboard */; };
+		321BB95922EBBE4500D0E034 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB95822EBBE4500D0E034 /* RoomsViewController.swift */; };
+		321BB96522EBC1F200D0E034 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321BB96222EBC1C800D0E034 /* Starscream.framework */; };
+		321BB96622EBC1F200D0E034 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 321BB96222EBC1C800D0E034 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3216AECF22ECE73D00C53494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 321BB91422EBB79A00D0E034 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3216AEC922ECE73D00C53494;
+			remoteInfo = RoomMonitorCore;
+		};
+		3216AEEE22ED015F00C53494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3216AEE722ED015E00C53494 /* AnyCodable.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "AnyCodable::AnyCodable::Product";
+			remoteInfo = AnyCodable;
+		};
+		3216AEF022ED015F00C53494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3216AEE722ED015E00C53494 /* AnyCodable.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "AnyCodable::AnyCodableTests::Product";
+			remoteInfo = AnyCodableTests;
+		};
+		321BB96122EBC1C800D0E034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 321BB95C22EBC1C800D0E034 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 33CCF0921F5DDC030099B092;
+			remoteInfo = Starscream;
+		};
+		321BB96322EBC1C800D0E034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 321BB95C22EBC1C800D0E034 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 335FA2021F5DF71D00F6D2EC;
+			remoteInfo = "Starscream Tests";
+		};
+		321BB96722EBC1F200D0E034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 321BB95C22EBC1C800D0E034 /* Starscream.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 33CCF0841F5DDC030099B092;
+			remoteInfo = Starscream;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		321BB96922EBC1F200D0E034 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				321BB96622EBC1F200D0E034 /* Starscream.framework in Embed Frameworks */,
+				3216AED222ECE73D00C53494 /* RoomMonitorCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoomMonitorCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3216AECC22ECE73D00C53494 /* RoomMonitorCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomMonitorCore.h; sourceTree = "<group>"; };
+		3216AECD22ECE73D00C53494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3216AED822ECE7E300C53494 /* WebsocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketService.swift; sourceTree = "<group>"; };
+		3216AEDB22ECE8BB00C53494 /* WebsocketMessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketMessageResponse.swift; sourceTree = "<group>"; };
+		3216AEDE22ECE96000C53494 /* WebsocketInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketInteractor.swift; sourceTree = "<group>"; };
+		3216AEE122ECE9CD00C53494 /* WebsocketAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketAPI.swift; sourceTree = "<group>"; };
+		3216AEE322ECFD8200C53494 /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
+		3216AEE522ECFE6F00C53494 /* WebsocketDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketDataResponse.swift; sourceTree = "<group>"; };
+		3216AEE722ED015E00C53494 /* AnyCodable.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnyCodable.xcodeproj; path = Carthage/Checkouts/AnyCodable/AnyCodable.xcodeproj; sourceTree = "<group>"; };
 		321BB91C22EBB79A00D0E034 /* RoomMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321BB91F22EBB79A00D0E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321BB92122EBB79A00D0E034 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,24 +107,96 @@
 		321BB92622EBB79A00D0E034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		321BB92922EBB79A00D0E034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		321BB92B22EBB79A00D0E034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		321BB95422EBBDD000D0E034 /* Rooms.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rooms.storyboard; sourceTree = "<group>"; };
+		321BB95822EBBE4500D0E034 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
+		321BB95C22EBC1C800D0E034 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = Carthage/Checkouts/Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3216AEC722ECE73D00C53494 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3216AEFA22ED023500C53494 /* AnyCodable.framework in Frameworks */,
+				3216AEFB22ED023500C53494 /* Starscream.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		321BB91922EBB79A00D0E034 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				321BB96522EBC1F200D0E034 /* Starscream.framework in Frameworks */,
+				3216AED122ECE73D00C53494 /* RoomMonitorCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3216AECB22ECE73D00C53494 /* RoomMonitorCore */ = {
+			isa = PBXGroup;
+			children = (
+				3216AEE022ECE9BE00C53494 /* Routers */,
+				3216AED722ECE78A00C53494 /* Websocket */,
+				3216AECC22ECE73D00C53494 /* RoomMonitorCore.h */,
+				3216AECD22ECE73D00C53494 /* Info.plist */,
+			);
+			path = RoomMonitorCore;
+			sourceTree = "<group>";
+		};
+		3216AED722ECE78A00C53494 /* Websocket */ = {
+			isa = PBXGroup;
+			children = (
+				3216AEDD22ECE95200C53494 /* Interactors */,
+				3216AEDA22ECE87C00C53494 /* Models */,
+				3216AED822ECE7E300C53494 /* WebsocketService.swift */,
+			);
+			path = Websocket;
+			sourceTree = "<group>";
+		};
+		3216AEDA22ECE87C00C53494 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3216AEDB22ECE8BB00C53494 /* WebsocketMessageResponse.swift */,
+				3216AEE322ECFD8200C53494 /* Monitor.swift */,
+				3216AEE522ECFE6F00C53494 /* WebsocketDataResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3216AEDD22ECE95200C53494 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				3216AEDE22ECE96000C53494 /* WebsocketInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		3216AEE022ECE9BE00C53494 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				3216AEE122ECE9CD00C53494 /* WebsocketAPI.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		3216AEE822ED015E00C53494 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3216AEEF22ED015F00C53494 /* AnyCodable.framework */,
+				3216AEF122ED015F00C53494 /* AnyCodableTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		321BB91322EBB79A00D0E034 = {
 			isa = PBXGroup;
 			children = (
 				321BB91E22EBB79A00D0E034 /* RoomMonitor */,
+				3216AECB22ECE73D00C53494 /* RoomMonitorCore */,
 				321BB91D22EBB79A00D0E034 /* Products */,
+				321BB95B22EBC1AB00D0E034 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				321BB91C22EBB79A00D0E034 /* RoomMonitor.app */,
+				3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,7 +212,7 @@
 		321BB91E22EBB79A00D0E034 /* RoomMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				321BB93122EBBCBA00D0E034 /* Home */,
+				321BB95322EBBDB900D0E034 /* Rooms */,
 				321BB91F22EBB79A00D0E034 /* AppDelegate.swift */,
 				321BB92122EBB79A00D0E034 /* ViewController.swift */,
 				321BB92322EBB79A00D0E034 /* Main.storyboard */,
@@ -65,16 +223,65 @@
 			path = RoomMonitor;
 			sourceTree = "<group>";
 		};
-		321BB93122EBBCBA00D0E034 /* Home */ = {
+		321BB95322EBBDB900D0E034 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				321BB95422EBBDD000D0E034 /* Rooms.storyboard */,
+				321BB95822EBBE4500D0E034 /* RoomsViewController.swift */,
 			);
-			path = Home;
+			path = Rooms;
+			sourceTree = "<group>";
+		};
+		321BB95B22EBC1AB00D0E034 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3216AEE722ED015E00C53494 /* AnyCodable.xcodeproj */,
+				321BB95C22EBC1C800D0E034 /* Starscream.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		321BB95D22EBC1C800D0E034 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				321BB96222EBC1C800D0E034 /* Starscream.framework */,
+				321BB96422EBC1C800D0E034 /* Starscream Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3216AEC522ECE73D00C53494 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3216AECE22ECE73D00C53494 /* RoomMonitorCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		3216AEC922ECE73D00C53494 /* RoomMonitorCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3216AED622ECE73D00C53494 /* Build configuration list for PBXNativeTarget "RoomMonitorCore" */;
+			buildPhases = (
+				3216AEC522ECE73D00C53494 /* Headers */,
+				3216AEC622ECE73D00C53494 /* Sources */,
+				3216AEC722ECE73D00C53494 /* Frameworks */,
+				3216AEC822ECE73D00C53494 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoomMonitorCore;
+			productName = RoomMonitorCore;
+			productReference = 3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		321BB91B22EBB79A00D0E034 /* RoomMonitor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 321BB92E22EBB79A00D0E034 /* Build configuration list for PBXNativeTarget "RoomMonitor" */;
@@ -82,10 +289,13 @@
 				321BB91822EBB79A00D0E034 /* Sources */,
 				321BB91922EBB79A00D0E034 /* Frameworks */,
 				321BB91A22EBB79A00D0E034 /* Resources */,
+				321BB96922EBC1F200D0E034 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				321BB96822EBC1F200D0E034 /* PBXTargetDependency */,
+				3216AED022ECE73D00C53494 /* PBXTargetDependency */,
 			);
 			name = RoomMonitor;
 			productName = RoomMonitor;
@@ -102,6 +312,10 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Bruce Colby";
 				TargetAttributes = {
+					3216AEC922ECE73D00C53494 = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
+					};
 					321BB91B22EBB79A00D0E034 = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -118,14 +332,63 @@
 			mainGroup = 321BB91322EBB79A00D0E034;
 			productRefGroup = 321BB91D22EBB79A00D0E034 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3216AEE822ED015E00C53494 /* Products */;
+					ProjectRef = 3216AEE722ED015E00C53494 /* AnyCodable.xcodeproj */;
+				},
+				{
+					ProductGroup = 321BB95D22EBC1C800D0E034 /* Products */;
+					ProjectRef = 321BB95C22EBC1C800D0E034 /* Starscream.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				321BB91B22EBB79A00D0E034 /* RoomMonitor */,
+				3216AEC922ECE73D00C53494 /* RoomMonitorCore */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		3216AEEF22ED015F00C53494 /* AnyCodable.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AnyCodable.framework;
+			remoteRef = 3216AEEE22ED015F00C53494 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3216AEF122ED015F00C53494 /* AnyCodableTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = AnyCodableTests.xctest;
+			remoteRef = 3216AEF022ED015F00C53494 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		321BB96222EBC1C800D0E034 /* Starscream.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Starscream.framework;
+			remoteRef = 321BB96122EBC1C800D0E034 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		321BB96422EBC1C800D0E034 /* Starscream Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Starscream Tests.xctest";
+			remoteRef = 321BB96322EBC1C800D0E034 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		3216AEC822ECE73D00C53494 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		321BB91A22EBB79A00D0E034 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,22 +396,50 @@
 				321BB92A22EBB79A00D0E034 /* LaunchScreen.storyboard in Resources */,
 				321BB92722EBB79A00D0E034 /* Assets.xcassets in Resources */,
 				321BB92522EBB79A00D0E034 /* Main.storyboard in Resources */,
+				321BB95522EBBDD000D0E034 /* Rooms.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3216AEC622ECE73D00C53494 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3216AEDC22ECE8BB00C53494 /* WebsocketMessageResponse.swift in Sources */,
+				3216AEE422ECFD8200C53494 /* Monitor.swift in Sources */,
+				3216AEE622ECFE6F00C53494 /* WebsocketDataResponse.swift in Sources */,
+				3216AED922ECE7E300C53494 /* WebsocketService.swift in Sources */,
+				3216AEE222ECE9CD00C53494 /* WebsocketAPI.swift in Sources */,
+				3216AEDF22ECE96000C53494 /* WebsocketInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		321BB91822EBB79A00D0E034 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				321BB92222EBB79A00D0E034 /* ViewController.swift in Sources */,
+				321BB95922EBBE4500D0E034 /* RoomsViewController.swift in Sources */,
 				321BB92022EBB79A00D0E034 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3216AED022ECE73D00C53494 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3216AEC922ECE73D00C53494 /* RoomMonitorCore */;
+			targetProxy = 3216AECF22ECE73D00C53494 /* PBXContainerItemProxy */;
+		};
+		321BB96822EBC1F200D0E034 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Starscream;
+			targetProxy = 321BB96722EBC1F200D0E034 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		321BB92322EBB79A00D0E034 /* Main.storyboard */ = {
@@ -170,6 +461,65 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3216AED322ECE73D00C53494 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 53K6M8K9XA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoomMonitorCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brucecolby.RoomMonitorCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3216AED422ECE73D00C53494 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 53K6M8K9XA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoomMonitorCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brucecolby.RoomMonitorCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		321BB92C22EBB79A00D0E034 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -289,6 +639,7 @@
 		321BB92F22EBB79A00D0E034 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53K6M8K9XA;
@@ -307,6 +658,7 @@
 		321BB93022EBB79A00D0E034 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 53K6M8K9XA;
@@ -325,6 +677,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3216AED622ECE73D00C53494 /* Build configuration list for PBXNativeTarget "RoomMonitorCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3216AED322ECE73D00C53494 /* Debug */,
+				3216AED422ECE73D00C53494 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		321BB91722EBB79A00D0E034 /* Build configuration list for PBXProject "RoomMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
