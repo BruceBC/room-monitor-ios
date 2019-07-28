@@ -165,7 +165,8 @@ extension RoomsViewController {
             let nav = segue.destination as! UINavigationController
             let vc  = nav.topViewController as! RoomDetailViewController
             
-            vc.title = room.name
+            vc.title      = room.name
+            vc.hardwareId = room.hardwareId
         }
     }
 }

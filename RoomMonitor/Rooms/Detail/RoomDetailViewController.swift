@@ -10,7 +10,7 @@ import UIKit
 import AnyCodable
 import RoomMonitorCore
 
-class RoomDetailViewController: UIViewController {
+class RoomDetailViewController: UITableViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var hardwareConnectionIndicatorView: UIView!
     @IBOutlet weak var websocketConnectedIndicatorView: UIView!
@@ -19,11 +19,15 @@ class RoomDetailViewController: UIViewController {
     // MARK: - Private Properties
     private var interactor: WebsocketInteractor!
     
+    // MARK: - Public Properties
+    var hardwareId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigation()
         setupViews()
+        setupTableView()
         setupInteractor()
     }
     
@@ -47,6 +51,10 @@ extension RoomDetailViewController {
     
     func setupInteractor() {
         interactor = WebsocketInteractor(url: "ws://localhost:4040/app", delegate: self)
+    }
+    
+    func setupTableView() {
+        tableView.tableFooterView = UIView()
     }
 }
 
@@ -126,8 +134,18 @@ extension RoomDetailViewController {
         }
     }
     
-    func pair() {
-        interactor.pair(hardwareId: "50e90b91c72a8a6531900e6c0b842ef3")
+    func pair(count: Int = 0) {
+        guard let hardwareId = hardwareId else {
+            
+            if count < 3 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.pair(count: count + 1)
+                }
+            }
+            
+            return
+        }
+        interactor.pair(hardwareId: hardwareId)
     }
     
     func setMax() {
@@ -158,5 +176,16 @@ extension RoomDetailViewController {
     
     func error(message: String) {
         print("error: \(message)")
+    }
+}
+
+// MARK: - TableView
+extension RoomDetailViewController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 490
     }
 }
