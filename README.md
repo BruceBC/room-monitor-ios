@@ -3,13 +3,9 @@ Monitor's if someone is present in a room or not.
 
 # Setup
 
-Make sure to set the following environment variables in your schema after cloning.
+Make sure to create an Env.plist file in the RoomMonitor target and set the following strings after cloning.
 
 ```
-local=ws://localhost:port/app
-prod=ws://ip:port/app
+local | String | ws://localhost:port/app
+prod | String | ws://ip:port/app
 ```
-
-## For Help
-
-Refer to: [How to Set Environment Variables in Xcode](https://medium.com/@derrickho_28266/xcode-custom-environment-variables-681b5b8674ec)
