@@ -7,5 +7,5 @@ Make sure to create an Env.plist file in the RoomMonitor target and set the foll
 
 ```
 local | String | ws://localhost:port/app
-prod | String | ws://ip:port/app
+prod  | String | ws://ip:port/app
 ```
