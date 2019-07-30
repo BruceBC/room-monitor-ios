@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320CE70122F0D880007D8CDC /* AnyCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AEEF22ED015F00C53494 /* AnyCodable.framework */; };
+		320CE70222F0D880007D8CDC /* AnyCodable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AEEF22ED015F00C53494 /* AnyCodable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		320CE70922F0DF30007D8CDC /* Env.plist in Resources */ = {isa = PBXBuildFile; fileRef = 320CE70822F0DF30007D8CDC /* Env.plist */; };
+		320CE70F22F0E1AC007D8CDC /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CE70E22F0E1AC007D8CDC /* Env.swift */; };
+		320CE71222F0E288007D8CDC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CE71122F0E288007D8CDC /* Environment.swift */; };
+		320CE71622F0E2F9007D8CDC /* EnvironmentDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CE71522F0E2F9007D8CDC /* EnvironmentDecoder.swift */; };
 		3216AECE22ECE73D00C53494 /* RoomMonitorCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3216AECC22ECE73D00C53494 /* RoomMonitorCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3216AED122ECE73D00C53494 /* RoomMonitorCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */; };
 		3216AED222ECE73D00C53494 /* RoomMonitorCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -42,6 +48,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		320CE70322F0D880007D8CDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3216AEE722ED015E00C53494 /* AnyCodable.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "AnyCodable::AnyCodable";
+			remoteInfo = AnyCodable;
+		};
 		3216AECF22ECE73D00C53494 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 321BB91422EBB79A00D0E034 /* Project object */;
@@ -95,6 +108,7 @@
 			files = (
 				321BB96622EBC1F200D0E034 /* Starscream.framework in Embed Frameworks */,
 				3216AED222ECE73D00C53494 /* RoomMonitorCore.framework in Embed Frameworks */,
+				320CE70222F0D880007D8CDC /* AnyCodable.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +116,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		320CE70822F0DF30007D8CDC /* Env.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Env.plist; sourceTree = "<group>"; };
+		320CE70E22F0E1AC007D8CDC /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		320CE71122F0E288007D8CDC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		320CE71522F0E2F9007D8CDC /* EnvironmentDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentDecoder.swift; sourceTree = "<group>"; };
 		3216AECA22ECE73D00C53494 /* RoomMonitorCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoomMonitorCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3216AECC22ECE73D00C53494 /* RoomMonitorCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomMonitorCore.h; sourceTree = "<group>"; };
 		3216AECD22ECE73D00C53494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,12 +170,39 @@
 			files = (
 				321BB96522EBC1F200D0E034 /* Starscream.framework in Frameworks */,
 				3216AED122ECE73D00C53494 /* RoomMonitorCore.framework in Frameworks */,
+				320CE70122F0D880007D8CDC /* AnyCodable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		320CE71022F0E263007D8CDC /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				320CE71422F0E2EE007D8CDC /* Decoder */,
+				320CE71322F0E2CA007D8CDC /* Models */,
+				320CE70E22F0E1AC007D8CDC /* Env.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		320CE71322F0E2CA007D8CDC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				320CE71122F0E288007D8CDC /* Environment.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		320CE71422F0E2EE007D8CDC /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				320CE71522F0E2F9007D8CDC /* EnvironmentDecoder.swift */,
+			);
+			path = Decoder;
+			sourceTree = "<group>";
+		};
 		3216AECB22ECE73D00C53494 /* RoomMonitorCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +305,7 @@
 		3216AF1422ED5DC300C53494 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				320CE71022F0E263007D8CDC /* Environment */,
 				3216AF2222ED6DA400C53494 /* CoreDataModels */,
 				3216AF1522ED5DCD00C53494 /* Constants.swift */,
 			);
@@ -329,6 +375,7 @@
 				321BB92822EBB79A00D0E034 /* LaunchScreen.storyboard */,
 				321BB92B22EBB79A00D0E034 /* Info.plist */,
 				3216AF1F22ED6C1200C53494 /* RoomMonitor.xcdatamodeld */,
+				320CE70822F0DF30007D8CDC /* Env.plist */,
 			);
 			path = RoomMonitor;
 			sourceTree = "<group>";
@@ -412,6 +459,7 @@
 			dependencies = (
 				321BB96822EBC1F200D0E034 /* PBXTargetDependency */,
 				3216AED022ECE73D00C53494 /* PBXTargetDependency */,
+				320CE70422F0D880007D8CDC /* PBXTargetDependency */,
 			);
 			name = RoomMonitor;
 			productName = RoomMonitor;
@@ -509,6 +557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320CE70922F0DF30007D8CDC /* Env.plist in Resources */,
 				321BB92A22EBB79A00D0E034 /* LaunchScreen.storyboard in Resources */,
 				321BB92722EBB79A00D0E034 /* Assets.xcassets in Resources */,
 				321BB92522EBB79A00D0E034 /* Main.storyboard in Resources */,
@@ -537,8 +586,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320CE71622F0E2F9007D8CDC /* EnvironmentDecoder.swift in Sources */,
+				320CE70F22F0E1AC007D8CDC /* Env.swift in Sources */,
 				3216AF1022ED5C1100C53494 /* RoomModel.swift in Sources */,
 				321BB92222EBB79A00D0E034 /* RoomDetailViewController.swift in Sources */,
+				320CE71222F0E288007D8CDC /* Environment.swift in Sources */,
 				321BB95922EBBE4500D0E034 /* RoomsViewController.swift in Sources */,
 				3216AF2722ED860900C53494 /* RoomController.swift in Sources */,
 				3216AF1A22ED661F00C53494 /* RoomEditViewController.swift in Sources */,
@@ -557,6 +609,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		320CE70422F0D880007D8CDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AnyCodable;
+			targetProxy = 320CE70322F0D880007D8CDC /* PBXContainerItemProxy */;
+		};
 		3216AED022ECE73D00C53494 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3216AEC922ECE73D00C53494 /* RoomMonitorCore */;

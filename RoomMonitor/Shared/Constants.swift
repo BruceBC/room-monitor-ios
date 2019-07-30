@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: - Websocket Urls
 struct Urls {
-    static let local = ProcessInfo.processInfo.environment["local"] ?? ""
-    static let prod  = ProcessInfo.processInfo.environment["prod"]  ?? ""
+    static let local = Env.local
+    static let prod  = Env.prod
     static let current = Urls.prod
 }
 
