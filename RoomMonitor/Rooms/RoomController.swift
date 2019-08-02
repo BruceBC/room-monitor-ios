@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol RoomControllerDelegate: class {
-    func refresh()
+    func presenceDidChange()
 }
 
 class RoomController {
@@ -24,8 +24,14 @@ class RoomController {
     // MARK: - Properties
     lazy var rooms = fetchRooms()
     weak var delegate: RoomControllerDelegate?
+    
+    public func closeSockets() {
+        sockets.forEach { $0.close() }
+        sockets = []
+    }
 }
 
+// MARK: RoomSocketDelegate
 extension RoomController: RoomSocketDelegate {
     func occupied(id: UUID, present: Bool) {
         rooms = rooms.map { room in
@@ -36,7 +42,15 @@ extension RoomController: RoomSocketDelegate {
             return room
         }
         
-        delegate?.refresh()
+        delegate?.presenceDidChange()
+    }
+    
+    func hardwareDisconnected(id: UUID) {
+        occupied(id: id, present: false)
+    }
+    
+    func socketDisconnected(id: UUID) {
+        occupied(id: id, present: false)
     }
 }
 
@@ -95,6 +109,14 @@ extension RoomController {
     }
     
     private func closeSocket(roomId: UUID) {
-        sockets = sockets.filter { $0.room.id != roomId }
+        sockets = sockets.filter { socket in
+            // Close socket
+            if socket.room.id == roomId {
+                socket.close()
+            }
+            
+            // Remove socket from list
+            return socket.room.id != roomId
+        }
     }
 }

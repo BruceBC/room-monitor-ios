@@ -26,6 +26,7 @@ class RoomEditViewController: UITableViewController {
     // MARK: - Properties
     private var room: RoomModel?
     weak var delegate: RoomEditViewControllerDelegate?
+    weak var dismissalDelegate: DismissalDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,9 @@ class RoomEditViewController: UITableViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            self.dismissalDelegate?.didDismiss()
+        }
     }
 }
 

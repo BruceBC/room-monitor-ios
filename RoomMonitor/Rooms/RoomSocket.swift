@@ -12,6 +12,17 @@ import RoomMonitorCore
 
 protocol RoomSocketDelegate: class {
     func occupied(id: UUID, present: Bool)
+    func hardwareDisconnected(id: UUID)
+    func socketDisconnected(id: UUID)
+    
+    // Optional
+    func hardwareConnected(id: UUID)
+    func socketConnected(id: UUID)
+}
+
+extension RoomSocketDelegate {
+    func hardwareConnected(id: UUID) {}
+    func socketConnected(id: UUID) {}
 }
 
 class RoomSocket {
@@ -29,6 +40,10 @@ class RoomSocket {
         
         // Setup
         setupInteractor()
+    }
+    
+    public func close() {
+        interactor.close()
     }
 }
 
@@ -49,10 +64,12 @@ extension RoomSocket {
 
 // MARK: WebsocketInteractorDelegate
 extension RoomSocket: WebsocketInteractorDelegate {
-    func connected() {}
+    func connected() {
+        delegate?.socketConnected(id: room.id)
+    }
     
     func disconnected() {
-        delegate?.occupied(id: room.id, present: false)
+        delegate?.socketDisconnected(id: room.id)
     }
     
     func received(result: Result<WebsocketMessageResponse, Error>) {
@@ -84,8 +101,6 @@ extension RoomSocket {
             pair()
         case "paired":
             setMax()
-        case "max":
-            getMonitor()
         case "connected":
             hardwareConnected()
         case "disconnected":
@@ -103,7 +118,9 @@ extension RoomSocket {
         switch response.type {
         case "monitor":
             report(monitor: Monitor.decode(response: response))
-            getMonitor()
+            
+            // Keep connection alive
+            interactor.ping()
         default:
             print("Unkown type")
         }
@@ -117,17 +134,12 @@ extension RoomSocket {
         interactor.setMax(max: room.maxDistance)
     }
     
-    func getMonitor() {
-        // Short delay before fetching again
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.interactor.getMonitor()
-        }
+    func hardwareConnected() {
+        delegate?.hardwareConnected(id: room.id)
     }
     
-    func hardwareConnected() {}
-    
     func hardwareDisconnected() {
-        delegate?.occupied(id: room.id, present: false)
+        delegate?.hardwareDisconnected(id: room.id)
     }
     
     func processNotStarted() {

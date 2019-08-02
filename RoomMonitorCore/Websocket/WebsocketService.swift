@@ -12,5 +12,5 @@ import Starscream
 public protocol WebsocketService {
     func pair(hardwareId: String)
     func setMax(max: Int)
-    func getMonitor()
+    func ping()
 }
