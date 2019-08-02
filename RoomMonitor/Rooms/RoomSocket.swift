@@ -99,14 +99,10 @@ extension RoomSocket {
         switch response.type {
         case "ready":
             pair()
-        case "paired":
-            setMax()
         case "connected":
             hardwareConnected()
         case "disconnected":
             hardwareDisconnected()
-        case "process_not_started":
-            processNotStarted()
         case "error":
             error(message: response.message)
         default:
@@ -118,9 +114,6 @@ extension RoomSocket {
         switch response.type {
         case "monitor":
             report(monitor: Monitor.decode(response: response))
-            
-            // Keep connection alive
-            interactor.ping()
         default:
             print("Unkown type")
         }
@@ -130,23 +123,16 @@ extension RoomSocket {
         interactor.pair(hardwareId: room.hardwareId)
     }
     
-    func setMax() {
-        interactor.setMax(max: room.maxDistance)
-    }
-    
     func hardwareConnected() {
+        // Update max distance (will also keep connection alive)
+        interactor.setMax(max: room.maxDistance)
+        
+        // Notify listeners
         delegate?.hardwareConnected(id: room.id)
     }
     
     func hardwareDisconnected() {
         delegate?.hardwareDisconnected(id: room.id)
-    }
-    
-    func processNotStarted() {
-        // Hardware not yet connected, need to try to update max again.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.setMax()
-        }
     }
     
     func error(message: String) {
