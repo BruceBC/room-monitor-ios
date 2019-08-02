@@ -17,10 +17,11 @@ class RoomDetailViewController: UITableViewController {
     @IBOutlet weak var occupiedIndicatorView: UIView!
     
     // MARK: - Private Properties
-    private var interactor: WebsocketInteractor!
+    private var socket: RoomSocket?
     
     // MARK: - Public Properties
-    var hardwareId: String?
+    var room: RoomModel?
+    weak var dismissalDelgate: DismissalDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +29,15 @@ class RoomDetailViewController: UITableViewController {
         setupNavigation()
         setupViews()
         setupTableView()
-        setupInteractor()
+        setupSocket()
     }
     
     // MARK: - IBActions
     @IBAction func back(_ sender: Any) {
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            self.socket?.close()
+            self.dismissalDelgate?.didDismiss()
+        }
     }
 }
 
@@ -49,8 +53,11 @@ extension RoomDetailViewController {
         occupiedIndicatorView.layer.cornerRadius           = 10
     }
     
-    func setupInteractor() {
-        interactor = WebsocketInteractor(url: Urls.current, delegate: self)
+    func setupSocket() {
+        guard let room = room else { return }
+        
+        socket           = RoomSocket(room: room)
+        socket?.delegate = self
     }
     
     func setupTableView() {
@@ -58,124 +65,29 @@ extension RoomDetailViewController {
     }
 }
 
-// MARK: - UI
-extension RoomDetailViewController {
-    func displayMonitor(monitor: Monitor?) {
-        guard let monitor = monitor else { return }
-        occupiedIndicatorView.backgroundColor = monitor.present ? .green : .red
-    }
-}
-
-// MARK: WebsocketInteractorDelegate
-extension RoomDetailViewController: WebsocketInteractorDelegate {
-    func connected() {
-        print("Connected")
-        websocketConnectedIndicatorView.backgroundColor = .green
+// MARK: RoomSocketDelegate
+extension RoomDetailViewController: RoomSocketDelegate {
+    func occupied(id: UUID, present: Bool) {
+        occupiedIndicatorView.backgroundColor = present ? .green : .red
     }
     
-    func disconnected() {
-        print("Disconnected")
-        hardwareConnectionIndicatorView.backgroundColor = .red
-        websocketConnectedIndicatorView.backgroundColor = .red
-        occupiedIndicatorView.backgroundColor           = .red
-    }
-    
-    func received(result: Result<WebsocketMessageResponse, Error>) {
-        switch result {
-        case .success(let response):
-            print(response)
-            route(response: response)
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
-    
-    func received(result: Result<WebsocketDataResponse, Error>) {
-        switch result {
-        case .success(let response):
-            print(response)
-            route(response: response)
-        case .failure(let error):
-            print(error.localizedDescription)
-        }
-    }
-}
-
-// MARK: Websocket Router
-extension RoomDetailViewController {
-    func route(response: WebsocketMessageResponse) {
-        switch response.type {
-        case "ready":
-            pair()
-        case "paired":
-            setMax()
-        case "max":
-            getMonitor()
-        case "connected":
-            hardwareConnected()
-        case "disconnected":
-            hardwareDisconnected()
-        case "process_not_started":
-            processNotStarted()
-        case "error":
-            error(message: response.message)
-        default:
-            print("Unkown type")
-        }
-    }
-    
-    func route(response: WebsocketDataResponse) {
-        switch response.type {
-        case "monitor":
-            displayMonitor(monitor: Monitor.decode(response: response))
-            getMonitor()
-        default:
-            print("Unkown type")
-        }
-    }
-    
-    func pair(count: Int = 0) {
-        guard let hardwareId = hardwareId else {
-            
-            if count < 3 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.pair(count: count + 1)
-                }
-            }
-            
-            return
-        }
-        interactor.pair(hardwareId: hardwareId)
-    }
-    
-    func setMax() {
-        interactor.setMax(max: 80)
-    }
-    
-    func getMonitor() {
-        // Short delay before fetching again
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.interactor.getMonitor()
-        }
-    }
-    
-    func hardwareConnected() {
+    func hardwareConnected(id: UUID) {
         hardwareConnectionIndicatorView.backgroundColor = .green
     }
     
-    func hardwareDisconnected() {
+    func hardwareDisconnected(id: UUID) {
         hardwareConnectionIndicatorView.backgroundColor = .red
+        occupiedIndicatorView.backgroundColor           = .red
     }
     
-    func processNotStarted() {
-        // Hardware not yet connected, need to try to update max again.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.setMax()
-        }
+    func socketConnected(id: UUID) {
+        websocketConnectedIndicatorView.backgroundColor = .green
     }
     
-    func error(message: String) {
-        print("error: \(message)")
+    func socketDisconnected(id: UUID) {
+        hardwareConnectionIndicatorView.backgroundColor = .red
+        websocketConnectedIndicatorView.backgroundColor = .red
+        occupiedIndicatorView.backgroundColor           = .red
     }
 }
 

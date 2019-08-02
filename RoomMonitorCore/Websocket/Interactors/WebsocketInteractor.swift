@@ -42,11 +42,15 @@ public class WebsocketInteractor: WebsocketService {
         socket?.write(string: WebsocketAPI.setMax(max: max).asJsonStringRequest())
     }
     
-    public func getMonitor() {
+    public func ping() {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        socket?.write(string: WebsocketAPI.getMonitor.asJsonStringRequest())
+        socket?.write(string: WebsocketAPI.ping.asJsonStringRequest())
+    }
+    
+    public func close() {
+        socket?.disconnect()
     }
 }
 

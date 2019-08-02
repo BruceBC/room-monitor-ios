@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol DismissalDelegate: class {
+    func didDismiss()
+}
+
 enum RoomsViewControllerType {
     case detail
     case edit
@@ -39,6 +43,23 @@ class RoomsViewController: UIViewController {
         setupTableView()
         setupController()
         setupView(.detail) // Default
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Close any existing connections
+        controller.closeSockets()
+        
+        // Refresh all connections
+        refresh()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // Close any existing connections
+        controller.closeSockets()
     }
     
     // MARK: - IBActions
@@ -117,7 +138,7 @@ extension RoomsViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - RoomControllerDelegate
 extension RoomsViewController: RoomControllerDelegate {
-    func refresh() {
+    func presenceDidChange() {
         guard let indexPaths = tableView.indexPathsForVisibleRows else { return }
         
         indexPaths.forEach { indexPath in
@@ -131,11 +152,15 @@ extension RoomsViewController: RoomControllerDelegate {
 // MARK: - RoomEditViewControllerDelegate
 extension RoomsViewController: RoomEditViewControllerDelegate {
     func saved() {
-        let range = NSMakeRange(0, tableView.numberOfSections)
-        let sections = NSIndexSet(indexesIn: range)
-        
-        controller.rooms = controller.fetchRooms()
-        tableView.reloadSections(sections as IndexSet, with: .automatic)
+        refresh()
+    }
+}
+
+// MARK: - DismissalDelegate
+extension RoomsViewController: DismissalDelegate {
+    func didDismiss() {
+        // Refresh socket connections
+        refresh()
     }
 }
 
@@ -147,7 +172,10 @@ extension RoomsViewController {
             let nav = segue.destination as! UINavigationController
             let vc  = nav.topViewController as! RoomEditViewController
             
-            vc.delegate = self
+            vc.delegate          = self
+            vc.dismissalDelegate = self
+            
+            closeSockets()
         }
         
         // Edit Room
@@ -157,7 +185,10 @@ extension RoomsViewController {
             let _   = vc.view // Ensure view is loaded
             
             vc.setup(with: room)
-            vc.delegate = self
+            vc.delegate          = self
+            vc.dismissalDelegate = self
+            
+            closeSockets()
         }
         
         // Detail Room
@@ -165,8 +196,11 @@ extension RoomsViewController {
             let nav = segue.destination as! UINavigationController
             let vc  = nav.topViewController as! RoomDetailViewController
             
-            vc.title      = room.name
-            vc.hardwareId = room.hardwareId
+            vc.title            = room.name
+            vc.room             = room
+            vc.dismissalDelgate = self
+            
+            closeSockets()
         }
     }
 }
@@ -174,8 +208,22 @@ extension RoomsViewController {
 // MARK: - Helpers
 extension RoomsViewController {
     @objc private func manualRefresh() {
-        // Calling saved, even though named inappropriately, because it does exaclty what I need
-        self.saved()
-        self.refreshControl.endRefreshing()
+        refresh()
+        refreshControl.endRefreshing()
+    }
+    
+    private func refresh() {
+        let range = NSMakeRange(0, tableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        
+        // Fech all rooms
+        controller.rooms = controller.fetchRooms()
+        
+        // Reload entire table view
+        tableView.reloadSections(sections as IndexSet, with: .automatic)
+    }
+    
+    private func closeSockets() {
+        controller.closeSockets()
     }
 }

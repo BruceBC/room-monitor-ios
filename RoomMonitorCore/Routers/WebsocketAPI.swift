@@ -11,7 +11,7 @@ import Foundation
 enum WebsocketAPI {
     case pair(hardwareId: String)
     case setMax(max: Int)
-    case getMonitor
+    case ping
     
     var parameters: [String: Any] {
         switch self {
@@ -25,9 +25,9 @@ enum WebsocketAPI {
                 "max": max,
                 "type": "max"
             ]
-        case .getMonitor:
+        case .ping:
             return [
-                "type": "monitor"
+                "type": "ping"
             ]
         }
     }

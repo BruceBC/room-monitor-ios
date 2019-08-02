@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		320CE70122F0D880007D8CDC /* AnyCodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AEEF22ED015F00C53494 /* AnyCodable.framework */; };
 		320CE70222F0D880007D8CDC /* AnyCodable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3216AEEF22ED015F00C53494 /* AnyCodable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		320CE70922F0DF30007D8CDC /* Env.plist in Resources */ = {isa = PBXBuildFile; fileRef = 320CE70822F0DF30007D8CDC /* Env.plist */; };
 		320CE70F22F0E1AC007D8CDC /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CE70E22F0E1AC007D8CDC /* Env.swift */; };
 		320CE71222F0E288007D8CDC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CE71122F0E288007D8CDC /* Environment.swift */; };
 		320CE71622F0E2F9007D8CDC /* EnvironmentDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CE71522F0E2F9007D8CDC /* EnvironmentDecoder.swift */; };
@@ -45,6 +44,7 @@
 		321BB95922EBBE4500D0E034 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321BB95822EBBE4500D0E034 /* RoomsViewController.swift */; };
 		321BB96522EBC1F200D0E034 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321BB96222EBC1C800D0E034 /* Starscream.framework */; };
 		321BB96622EBC1F200D0E034 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 321BB96222EBC1C800D0E034 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EF337A1922F49E7200BADCBE /* Env.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF337A1822F49E7200BADCBE /* Env.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +116,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		320CE70822F0DF30007D8CDC /* Env.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Env.plist; sourceTree = "<group>"; };
 		320CE70E22F0E1AC007D8CDC /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		320CE71122F0E288007D8CDC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		320CE71522F0E2F9007D8CDC /* EnvironmentDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentDecoder.swift; sourceTree = "<group>"; };
@@ -152,6 +151,7 @@
 		321BB95422EBBDD000D0E034 /* Rooms.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rooms.storyboard; sourceTree = "<group>"; };
 		321BB95822EBBE4500D0E034 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		321BB95C22EBC1C800D0E034 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = Carthage/Checkouts/Starscream/Starscream.xcodeproj; sourceTree = "<group>"; };
+		EF337A1822F49E7200BADCBE /* Env.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Env.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,7 +375,7 @@
 				321BB92822EBB79A00D0E034 /* LaunchScreen.storyboard */,
 				321BB92B22EBB79A00D0E034 /* Info.plist */,
 				3216AF1F22ED6C1200C53494 /* RoomMonitor.xcdatamodeld */,
-				320CE70822F0DF30007D8CDC /* Env.plist */,
+				EF337A1822F49E7200BADCBE /* Env.plist */,
 			);
 			path = RoomMonitor;
 			sourceTree = "<group>";
@@ -557,7 +557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				320CE70922F0DF30007D8CDC /* Env.plist in Resources */,
+				EF337A1922F49E7200BADCBE /* Env.plist in Resources */,
 				321BB92A22EBB79A00D0E034 /* LaunchScreen.storyboard in Resources */,
 				321BB92722EBB79A00D0E034 /* Assets.xcassets in Resources */,
 				321BB92522EBB79A00D0E034 /* Main.storyboard in Resources */,
