@@ -60,6 +60,7 @@ extension WebsocketInteractor {
         guard let url = URL(string: url) else { return }
         
         socket = WebSocket(url: url)
+        socket?.disableSSLCertValidation = true
         socket?.delegate = self
         socket?.connect()
     }
